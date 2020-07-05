@@ -2,8 +2,15 @@
 {% block title 'Gestion des Chambres' %}
 {% block body %}
 
-    <div class="jumbotron txt-center">
-        <h1>Enregistrer chambre</h1>
+    <div class="container" style="background-color: white; border: solid 1px silver; border-radius: 5px; padding: 10px">
+        <h2>Formulaire d'enregistrement chambre</h2>
+
+        {{ form_start(form) }}
+
+        {{ form_row(form.numBatiment, {'attr': {'class': 'form-control'}}) }}
+        {{ form_row(form.numChambre) }}
+        <button class="btn btn-primary" type="submit">Enregistrer</button>
+        {{ form_end(form) }}
     </div>
 
 

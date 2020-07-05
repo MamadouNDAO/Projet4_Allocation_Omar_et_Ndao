@@ -22,6 +22,7 @@ class Batiment
     private $id;
 
     /**
+     * @Assert\Positive
      * @ORM\Column(type="integer", unique=true)
      */
     private $numBatiment;
