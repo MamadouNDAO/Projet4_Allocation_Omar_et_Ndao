@@ -2,8 +2,25 @@
 {% block title 'Gestion des étudiant' %}
 {% block body %}
 
-    <div class="container" style="background-color: white; border: solid 1px silver; border-radius: 5px">
+    <div class="container" style="background-color: white; border: solid 1px silver; border-radius: 5px; padding: 10px">
         <h1>Enregistrer étudiant</h1>
+
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-md-6">{{ form_row(form.prenom) }}</div>
+            <div class="col-md-6">{{ form_row(form.nom) }}</div>
+            <div class="col-md-6">{{ form_row(form.mail) }}</div>
+            <div class="col-md-6">{{ form_row(form.telephone) }}</div>
+            <div class="col-md-6">{{ form_row(form.matricule) }}</div>
+            <div class="col-md-6">{{ form_row(form.typeEtudiant) }}</div>
+            <div class="col-md-6">{{ form_row(form.typeBourse) }}</div>
+            <div class="col-md-6">{{ form_row(form.numChambre) }}</div>
+            <div class="col-md-6">{{ form_row(form.nomDepartement) }}</div>
+            <div class="col-md-6">{{ form_row(form.adresse) }}</div>
+        </div>
+        
+        <button class="btn btn-primary" type="submit">Enregistrer</button>
+        {{ form_end(form) }}
     </div>
 
 

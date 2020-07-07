@@ -4,11 +4,16 @@
 
     <div class="container" style="background-color: white; border: solid 1px silver; border-radius: 5px; padding: 10px">
         <h2>Formulaire d'enregistrement chambre</h2>
+            <span>Note: Veuillez choisir un numéro de batiment et le numéro de chambre sera généré automatiquement.</span>
+        <br><br><br>
+
+
 
         {{ form_start(form) }}
-
-        {{ form_row(form.numBatiment, {'attr': {'class': 'form-control'}}) }}
-        {{ form_row(form.numChambre) }}
+            <div class="row">
+                <div class="col-md-6">{{ form_row(form.numBatiment)}}</div>
+                <div class="col-md-6">{{ form_row(form.numChambre)}}</div>
+            </div>
         <button class="btn btn-primary" type="submit">Enregistrer</button>
         {{ form_end(form) }}
     </div>

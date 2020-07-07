@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
+
 use App\Repository\ChambreRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * @ORM\Entity(repositoryClass=ChambreRepository::class)
@@ -26,10 +28,15 @@ class Chambre
      */
     private $numChambre;
 
+
     /**
      * @ORM\ManyToOne(targetEntity=Batiment::class, inversedBy="chambres")
      */
     private $numBatiment;
+    public function __toString()
+    {
+        return (string) $this->numBatiment;
+    }
 
     /**
      * @ORM\OneToMany(targetEntity=Etudiant::class, mappedBy="numChambre")
@@ -39,6 +46,7 @@ class Chambre
     public function __construct()
     {
         $this->etudiants = new ArrayCollection();
+
     }
 
     public function getId(): ?int

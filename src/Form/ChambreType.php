@@ -11,16 +11,18 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+
 class ChambreType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
         $builder
             ->add('numChambre')
-            ->add('numBatiment', EntityType::class,[
-                'class' => Batiment::class,
-                'choice_label' => 'numBatiment',
-            ])
+            ->add('numBatiment', 'Entity', array(
+                    'class' => 'App:Batiment',
+                    'choice_label' => 'numBatiment',
+            ))
         ;
     }
 

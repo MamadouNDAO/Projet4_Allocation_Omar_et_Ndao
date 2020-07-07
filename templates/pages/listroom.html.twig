@@ -1,10 +1,50 @@
 {% extends "base.html.twig" %}
 {% block title 'Gestion des Chambres' %}
 {% block body %}
+{#{% dump(chambre) %}#}
 
-    <div class="container" style="background-color: white; border: solid 1px silver; border-radius: 5px">
-        <h1>Liste chambre</h1>
-    </div>
+     <div class="container" style="background-color: white; border: solid 1px silver; border-radius: 5px">
+         <h1>Liste chambre</h1>
+         <table class="table table-striped table-bordered">
+             <thead>
+             <tr>
+                 <th>id</th>
+                 <th>Numéro chambre</th>
+                 <th>Numéroe</th>
+
+
+             </tr>
+             </thead>
+             <tbody>
+                 {% for row in chambre %}
+
+                 <tr>
+                     <td>{{ row.id }}</td>
+                     <td>{{ row.numChambre }}</td>
+
+
+
+
+                     <td>
+                         <button class="btn btn-primary">Modifier</button>
+                         <button class="btn btn-danger">Supprimer</button>
+                     </td>
+
+
+                 </tr>
+
+                 {% endfor %}
+             </tbody>
+         </table>
+
+
+         <div class="navigation text-center">
+             {{ knp_pagination_render(chambre) }}
+         </div>
+
+
+
+     </div>
 
 
 {% endblock %}

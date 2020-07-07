@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Chambre;
+use App\Entity\Batiment;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

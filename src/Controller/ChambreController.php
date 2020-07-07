@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Chambre;
 use App\Form\ChambreType;
+use Knp\Component\Pager\PaginatorInterface;
+
 
 class ChambreController extends AbstractController
 {
@@ -24,6 +26,7 @@ class ChambreController extends AbstractController
 
         if($request->isMethod('POST') && $form->handleRequest($request)->isValid())
         {
+
             $em->persist($chambre);
             $em->flush();
         }
@@ -32,16 +35,37 @@ class ChambreController extends AbstractController
             'form' => $form->createView(),
             'current_menu' => 'activation'
         ]);
+
+
     }
 
     /**
-     * @Route("/list_room", name="list_room.index")
+     * @Route("/list_room", name="list_room.index", defaults={"page"=1})
+     * @param Request $request
+     * @param PaginatorInterface $paginator
      * @return Response
      */
-    public function ListRoom():Response
+    public function ListRoom(Request $request, PaginatorInterface $paginator)
     {
+
+        $em = $this->getDoctrine()->getManager();
+        $rooms = $this->getDoctrine()->getRepository(Chambre::class)->findAll();
+
+
+       // $send = $em->getRepository(Chambre::class);
+       // $rooms =$send->createQueryBuilder('p')->getQuery();
+
+        //$paginator = $this->get('knp_paginator');
+
+       $pagination= $paginator->paginate(
+          $rooms,
+          $request->query->getInt('page', 1),
+            5
+       );
+
         return $this->render('pages/listroom.html.twig', [
-            'current_menu' => 'activation'
+            'chambre' => $pagination,
+
         ]);
     }
 }

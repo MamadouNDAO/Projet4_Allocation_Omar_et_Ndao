@@ -35,6 +35,7 @@ class Batiment
     public function __construct()
     {
         $this->chambres = new ArrayCollection();
+
     }
 
     public function getId(): ?int
